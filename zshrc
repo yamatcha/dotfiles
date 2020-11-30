@@ -10,13 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
-#
-# goenv settings
-# export GOENV_ROOT=$HOME/.goenv
-# export PATH=$GOENV_ROOT/bin:$PATH
-# eval "$(goenv init -)"
-
 # go settings
 export GOPATH=/Users/soju/go
 export PATH=$GOPATH/bin:$PATH
@@ -154,11 +147,19 @@ alias dstop='docker container stop $(dcur)'
 alias dimgrm='docker rmi `docker images | awk '\''NR>1{print $3}'\''` ' 
 alias dcrm='docker rm -f `docker ps -a -q`'
 
+
+#java(scala)setting
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
+PATH=\${JAVA_HOME}/bin:${PATH}
+
 # 補完
 autoload -Uz compinit
 compinit
 # path settings 
 typeset -U path PATH
+
+# ls colored
+export CLICOLOR=1
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/soju/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/soju/google-cloud-sdk/path.zsh.inc'; fi
